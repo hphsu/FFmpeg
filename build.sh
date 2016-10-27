@@ -1,6 +1,7 @@
 #!/bin/sh
 set -x
 
+
 HOME=/src
 cd /src
 PATH="$HOME/bin:$PATH" PKG_CONFIG_PATH="$HOME/ffmpeg_build/lib/pkgconfig" ./configure \
