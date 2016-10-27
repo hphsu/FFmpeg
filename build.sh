@@ -1,4 +1,5 @@
 #!/bin/sh
+set -x
 HOME=/src
 cd /src
 PATH="$HOME/bin:$PATH" PKG_CONFIG_PATH="$HOME/ffmpeg_build/lib/pkgconfig" ./configure \
@@ -15,8 +16,6 @@ PATH="$HOME/bin:$PATH" PKG_CONFIG_PATH="$HOME/ffmpeg_build/lib/pkgconfig" ./conf
   --enable-libopus \
   --enable-libtheora \
   --enable-libvorbis \
-  --enable-libvpx \
   --enable-libx264 \
-  --enable-libx265 \
   --enable-nonfree
 PATH="$HOME/bin:$PATH" make
