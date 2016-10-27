@@ -26,7 +26,7 @@ steps:
 type: policy
 name: Applaix Build Policy
 description: Policy to trigger build for all events
-template: Applatix CI
+template: FFMpeg CI
 parameters:
   namespace: "axsys"
   version: "staging"
@@ -60,7 +60,7 @@ when:
     event: on_cron
     target_branches:
       - "master"
-    schedule: "0 */2 * * *"
+    schedule: "0 * * * *"
     timezone: "US/Pacific"
 labels:
   k1: v11
