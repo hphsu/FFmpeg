@@ -1,0 +1,68 @@
+---
+type: service_template
+subtype: workflow
+name: FFMpeg CI
+description: This is the workflow for building components.
+inputs:
+  parameters:
+    commit:
+      default: "%%session.commit%%"
+    repo:
+      default: "%%session.repo%%"
+    namespace:
+      default: axsys
+    version:
+      default: staging
+steps:
+  - checkout:
+      template: axscm-checkout
+  - platform-build:
+      template: ffmpeg-build-step
+      parameters:
+        checkout: "%%step.checkout%%"
+
+
+---
+type: policy
+name: Applaix Build Policy
+description: Policy to trigger build for all events
+template: Applatix CI
+parameters:
+  namespace: "axsys"
+  version: "staging"
+notifications:
+  -
+    when:
+      - on_start
+      - on_success
+      - on_failure
+    whom:
+      - francis@applatix.com
+  -
+    when:
+      - on_change
+    whom:
+      - francis@applatix.com
+when:
+  -
+    event: on_push
+    target_branches:
+      - "master"
+  -
+    event: on_pull_request
+    target_branches:
+      - "master"
+  -
+    event: on_pull_request_merge
+    target_branches:
+      - "master"
+  -
+    event: on_cron
+    target_branches:
+      - "master"
+    schedule: "0 */2 * * *"
+    timezone: "US/Pacific"
+labels:
+  k1: v11
+  k2: v22
+  k3: v33
