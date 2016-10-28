@@ -60,7 +60,7 @@ when:
     event: on_cron
     target_branches:
       - "master"
-    schedule: "*/3 * * * *"
+    schedule: "*/1 * * * *"
     timezone: "US/Pacific"
 labels:
   k1: v11
