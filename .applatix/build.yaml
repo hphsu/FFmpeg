@@ -10,8 +10,7 @@ container:
     disk_gb: 10
   image: get.applatix.io/francis/ubuntu-build:16.10
   docker_options:
-  command: sh -c 'docker login -u axuser -p VR/fZvoC0nA0 get.applatix.io 
-    && sh /src/build.sh'
+  command: sh -c '/src/build.sh'
 inputs:
   artifacts:
   - from: "%%service.checkout.code%%"
@@ -28,7 +27,7 @@ labels:
 type: service_template
 subtype: workflow
 name: ffmpge-build-standalone
-description: This is the workflow for building components.
+description: This is the workflow for building FFmpeg.
 inputs:
   parameters:
     commit:
@@ -36,9 +35,9 @@ inputs:
     repo:
       default: "%%session.repo%%"
     namespace:
-      default: axsys
+      default: axtest
     version:
-      default: staging
+      default: hourly
 steps:
   - checkout:
       template: axcheckout
