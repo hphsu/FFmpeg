@@ -10,7 +10,7 @@ container:
     disk_gb: 10
   image: get.applatix.io/francis/ubuntu-build:16.10
   docker_options:
-  command: sh -c '/src/build.sh'
+  command: ls -l /src && sh /src/build.sh
 inputs:
   artifacts:
   - from: "%%service.checkout.code%%"
